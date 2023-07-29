@@ -13,12 +13,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("emails")
+//@WebServlet("emails")
 public class AgendamentoEmailServlet  extends HttpServlet {
 	
-	/**
-	 * 
-	 */
+	/*
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
@@ -43,5 +41,7 @@ public class AgendamentoEmailServlet  extends HttpServlet {
 		servico.inserir(agendamentoEmail);
 		
 	}
+	
+	*/
 
 }
