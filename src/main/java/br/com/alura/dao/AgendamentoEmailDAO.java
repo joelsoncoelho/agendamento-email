@@ -4,14 +4,22 @@ import java.util.List;
 
 import br.com.alura.entidade.AgendamentoEmail;
 import jakarta.ejb.Stateless;
+import jakarta.ejb.TransactionManagement;
+import jakarta.ejb.TransactionManagementType;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.UserTransaction;
 
 @Stateless
+@TransactionManagement(TransactionManagementType.BEAN)
 public class AgendamentoEmailDAO {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Inject
+	private UserTransaction userTransaction;
 	
 	/*
 	public AgendamentoEmailDAO() {
@@ -33,7 +41,14 @@ public class AgendamentoEmailDAO {
 	}
 	
 	public void alterar( AgendamentoEmail agendamentoEmail) {
-		entityManager.merge(agendamentoEmail);
+		try {
+			userTransaction.begin();
+			entityManager.merge(agendamentoEmail);
+			userTransaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

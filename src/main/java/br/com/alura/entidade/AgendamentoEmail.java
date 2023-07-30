@@ -11,9 +11,6 @@ import jakarta.persistence.Id;
 @Entity
 public class AgendamentoEmail implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id

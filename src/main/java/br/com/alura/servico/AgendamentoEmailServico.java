@@ -26,12 +26,17 @@ public class AgendamentoEmailServico {
 	}
 	
 	public List<AgendamentoEmail> listarPorNaoAgendado(){
-		return dao.listarPorNaoAgendado();
+		return dao.listarPorNaoAgendado();	
 	}
 	
+	//@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 	public void alterar(AgendamentoEmail agendamentoEmail) {
-		agendamentoEmail.setAgendado(true);
-		dao.alterar(agendamentoEmail);
+		//if(agendamentoEmail.getEmail().equals("sofia@alura.com")) {
+		//	throw new RuntimeException("Não foi possível alterar");
+		//} else {
+			agendamentoEmail.setAgendado(true);
+			dao.alterar(agendamentoEmail);
+		//}
 	}
 	
 	public void enviar(AgendamentoEmail agendamentoEmail) {
